@@ -1,6 +1,8 @@
 QUESTÃO 01 — Especificação do Package (8 pontos)
 Crie a ESPECIFICAÇÃO do package pkg_pedidos contendo os seguintes elementos:
+
 a) Constante c_desconto_maximo do tipo NUMBER com valor 50.
+
 b) Variável pública g_ultimo_pedido_processado do tipo NUMBER.
 c) Exceção pública pedido_nao_encontrado.
 d) Exceção pública cliente_inativo.
