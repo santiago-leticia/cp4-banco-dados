@@ -16,9 +16,8 @@ END pkg_pedidos;
 
 --sequencia para o nextval funcionar
 CREATE SEQUENCE seq_historico
-START WITH 2
-INCREMENT BY 1
-NOCACHE;
+START WITH 1
+INCREMENT BY 1;
 
 --estrutura do package do bosy
 CREATE OR REPLACE PACKAGE BODY pkg_pedidos AS
@@ -29,11 +28,13 @@ CREATE OR REPLACE PACKAGE BODY pkg_pedidos AS
     SELECT 
         SUM((QTD_ITEM * VAL_UNITARIO_ITEM) - VAL_DESCONTO_ITEM)
     INTO vlr_somando
-    FROM ITEM_PEDIDO
+    FROM item_pedido
     WHERE cod_pedido = p_cod_pedido;
+    
         IF vlr_somando IS NULL THEN
             vlr_somando := 0;
-        END IF; 
+        END IF;
+        
         UPDATE PEDIDO
         SET VAL_TOTAL_PEDIDO = vlr_somando
         WHERE COD_PEDIDO = p_cod_pedido;
@@ -97,6 +98,7 @@ CREATE OR REPLACE PACKAGE BODY pkg_pedidos AS
             v_desconto number;
             v_seq_endereco_cliente number;
         BEGIN
+        
             SELECT 
                 DAT_CANCELAMENTO
             INTO 
