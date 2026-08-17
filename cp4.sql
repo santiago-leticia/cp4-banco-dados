@@ -14,6 +14,12 @@ create or REPLACE PACKAGE pkg_pedidos AS
     PROCEDURE cancelar_pedido( p_cod_pedido IN NUMBER, p_motivo IN VARCHAR2);
 END pkg_pedidos;
 
+--sequencia para o nextval funcionar
+CREATE SEQUENCE seq_historico
+START WITH 2
+INCREMENT BY 1
+NOCACHE;
+
 --estrutura do package do bosy
 CREATE OR REPLACE PACKAGE BODY pkg_pedidos AS
     --questao 2
